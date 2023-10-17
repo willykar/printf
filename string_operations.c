@@ -47,27 +47,27 @@ int print_binary(va_list args)
  * @args: Arguments passed
  * Return: sysmbols printed
  */
-int print_octal(va_list list)
+int print_octal(va_list args)
 {
 	unsigned int number;
 	int length;
 	char *octal_rep;
 	char *rev_str;
 
-	num = va_arg(args, unsigned int);
+	number = va_arg(args, unsigned int);
 
 	if (number == 0)
 		return (_write('0'));
 	if (number < 1)
 		return (-1);
-	len = base_length(number, 8);
+	length = base_length(number, 8);
 
 	octal_rep = malloc(sizeof(char) * length + 1);
 	if (octal_rep == NULL)
 		return (-1);
-	for (length = 0; num > 0; length++)
+	for (length = 0; number > 0; length++)
 	{
-		octal_rep[length] = (num % 8) + 48;
+		octal_rep[length] = (number % 8) + 48;
 		number = number / 8;
 
 	}
@@ -95,13 +95,13 @@ int print_hex(va_list args)
 	char *hex_rep;
 	char *rev_hex;
 
-	num = va_arg(args, unsigned int);
+	number = va_arg(args, unsigned int);
 
 	if (number == 0)
 		return (_write('0'));
 	if (number < 1)
 		return (-1);
-	len = base_length(number, 16);
+	length = base_length(number, 16);
 	hex_rep = malloc(sizeof(char) * length + 1);
 	if (hex_rep == NULL)
 		return (-1);
@@ -147,7 +147,7 @@ int print_heX(va_list args)
 		return (_write('0'));
 	if (number < 1)
 		return (-1);
-	len = base_length(number, 16);
+	length = base_length(number, 16);
 	hex_rep = malloc(sizeof(char) * length + 1);
 	if (hex_rep == NULL)
 		return (-1);
@@ -170,7 +170,7 @@ int print_heX(va_list args)
 	write_base(rev_hex);
 	free(hex_rep);
 	free(rev_hex);
-	return (len);
+	return (length);
 }
 
 /**

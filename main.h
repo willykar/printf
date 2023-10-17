@@ -8,6 +8,12 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/**
+ * struct format_string - structure of symbols
+ * @fmt: pointer
+ * @f: pointer to a function
+*/
+
 struct format_string
 {
 	char *fmt;

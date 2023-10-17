@@ -37,7 +37,7 @@ int rot13(va_list args)
 	int j;
 	char *str;
 	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char rotalpha[] = 
+	char rotalpha[] =
 		"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	str = va_arg(args, char *);

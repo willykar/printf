@@ -41,7 +41,7 @@ void write_base(char *str)
 }
 
 /**
- * base_len - calculates the length for octal number
+ * base_length - calculates the length for octal number
  * @number: length being calculated
  * @base: Base
  * Return: an integer representing the length of a number
