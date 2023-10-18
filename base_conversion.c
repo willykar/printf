@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * rev_string - reverses a string
+ * reverse_string - reverses a string
  * @s: string to be reversed
  * Return: pointer to character
  */
-char *rev_string(char *s)
+char *reverse_string(char *s)
 {
 	int length;
 	int head;
