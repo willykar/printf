@@ -26,7 +26,6 @@ struct formatted_string
 typedef struct formatted_string formatted_string_t;
 
 int _printf(const char *format, ...);
-<<<<<<< HEAD
 int handle_print(const char *formatted_string, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
@@ -91,24 +90,4 @@ int is_digit(char);
 long int convert_size_number(long int num, int size);
 long int convert_size_unsgnd(unsigned long int num, int size);
 
-=======
-int _write(char c);
-int print_char(va_list);
-int print_string(va_list);
-int print_percent(va_list);
-int print_integer(va_list);
-int print_number(va_list);
-int print_binary(va_list);
-int print_reversed(va_list arg);
-int rot13(va_list);
-char *reverse_string(char *s);
-void write_base(char *str);
-unsigned int base_length(unsigned int number, int base);
-char *_memcpy(char *dest, char *src, unsigned int num_bytes);
-int unsigned_integer(va_list);
-int print_octal(va_list list);
-int print_hex(va_list list);
-int print_heX(va_list list);
-int print_unsigned_number(unsigned int);
->>>>>>> 6f82ad257bb7582506b7f257608287e5da1bf947
 #endif /* MAIN_H */
