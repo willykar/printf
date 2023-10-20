@@ -6,7 +6,7 @@
 */
 int print_reversed(va_list args)
 {
-char *s = va_arg(args, char*);
+char *s = va_arg(args, char *);
 	int i;
 	int j = 0;
 
@@ -25,29 +25,31 @@ char *s = va_arg(args, char*);
  */
 int rot13(va_list args)
 {
-	int i;
-	int j;
-	char *str;
-	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char rotalpha[] =
-		"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	int i, j, counter = 0;
+	int k = 0;
+	char *s = va_arg(args, char*);
+	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
 
-	str = va_arg(args, char *);
-
-	if (str == NULL)
-		return (-1);
-	for (i = 0; str[i] != '\0'; i++)
+	if (s == NULL)
+		s = "(null)";
+	for (i = 0; s[i]; i++)
 	{
-		for (j = 0; j <= 52; j++)
+		k = 0;
+		for (j = 0; alpha[j] && !k; j++)
 		{
-			if (str[i] == alpha[j])
+			if (s[i] == alpha[j])
 			{
-				_write(rotalpha[j]);
-				break;
+				_putchar(beta[j]);
+				counter++;
+				k = 1;
 			}
 		}
-		if (j == 53)
-			_write(str[i]);
+		if (!k)
+		{
+			_putchar(s[i]);
+			counter++;
+		}
 	}
-	return (i);
+	return (counter);
 }
