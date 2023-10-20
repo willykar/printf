@@ -1,38 +1,44 @@
 #include "main.h"
+void print_buffer(char buffer[], int *buffer_index);
 /**
- * _printf - a function that produces output according to a format
- *@format: contain characters
- * Return: success
+ * _printf - Printf function todifferent arguments
+ * @format: format
+ * Return: Print chars
  */
 int _printf(const char *format, ...)
 {
-	int printed_characters = 0;
-
-	fmt_t fmt_list[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{"%", print_percent},
-		{"d", print_integer},
-		{"i", print_integer},
-		{"b", print_binary},
-		{"r", print_reversed},
-		{"R", rot13},
-		{"u", unsigned_integer},
-		{"o", print_octal},
-		{"x", print_hex},
-		{"X", print_heX},
-		{NULL, NULL}
-	};
-
-	va_list args;
-
-	va_start(args, format);
+	int a, print = 0, chars_printed = 0;
+	int flags, width, precision, size, buffer_index = 0;
+	va_list list;
+	char buffer[BUFF_SIZE];
 
 	if (format == NULL)
 		return (-1);
 
-	printed_characters = formatStringPrinter(format, fmt_list, args);
+	va_start(list, format);
 
-	va_end(args);
-	return (printed_characters);
+	for (a = 0; format && format[a] != '\0'; a++)
+	{
+		if (format[a] != '%')
+		{
+			buffer[buffer_index++] = format[a];
+			if (buffer_index == BUFF_SIZE)
+				print_buffer(buffer, &buffer_index);
+			chars_printed++;
+		}
+		else
+		{
+			print_buffer(buffer, &buffer_index);
+			flags = get_flags(format, &a);
+			width = get_width(format, &a, list);
+			precision = get_precision(format, &a, list);
+			size = get_size(format, &a);
+			++a;
+			print = handle_print(format, &a, list, buffer,
+				flags, width, precision, size);
+			if (print == -1)
+				return (-1);
+			chars_printed += print;
+		}
+	}
 }
