@@ -39,5 +39,4 @@ int print_octal(va_list list);
 int print_hex(va_list list);
 int print_heX(va_list list);
 int print_unsigned_number(unsigned int);
-int printf_pointer(va_list list);
 #endif /* MAIN_H */
