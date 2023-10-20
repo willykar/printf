@@ -6,25 +6,17 @@
 */
 int print_reversed(va_list args)
 {
-	int length;
-	char *str;
-	char *ptr;
+char *s = va_arg(args, char*);
+	int i;
+	int j = 0;
 
-	str = va_arg(args, char *);
-
-	if (str == NULL)
-		return (-1);
-
-	ptr = reverse_string(str);
-
-	if (ptr == NULL)
-		return (-1);
-
-	for (length = 0; ptr[length] != '\0'; length++)
-		_write(ptr[length]);
-
-	free(ptr);
-	return (length);
+	if (s == NULL)
+		s = "(null)";
+	while (s[j] != '\0')
+		j++;
+	for (i = j - 1; i >= 0; i--)
+		_putchar(s[i]);
+	return (j);
 }
 /**
  * rot13 - a function that converts string to rot13
